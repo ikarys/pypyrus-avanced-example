@@ -1,0 +1,31 @@
+# template.yaml
+
+module_name: 
+  input: "Enter the name of the Terraform module"
+  default: "storage_module"
+
+resource_group_name:
+  input: "Enter the name of the resource group"
+  required: true
+
+location:
+  input: "Enter the location"
+  default: "France Central"
+
+storage_account_name:
+  input: "Enter the name of the storage account"
+  default: "mystorageaccount"
+
+replication_enabled:
+  input: "Do you want replication?"
+  choices: [true, false]
+  default: false
+
+replication_type:
+  input: "Select the replication type for storage account"
+  choices: ["LRS", "GRS", "ZRS", "RAGRS"]
+  default: "LRS"
+  conditions:
+    - source: replication_enabled
+      operator: eq
+      value: true
