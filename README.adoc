@@ -1,0 +1,46 @@
+# Pypyrus advanced example
+
+## Overview
+
+This repository serves as advanced example showcasing the capabilities of Pypyrus, a powerful file generation tool. In this example, Pypyrus is utilized to create Terraform files to create Storage account with conditional option.
+
+
+## Usage
+
+### Prerequisites
+
+Ensure you have Pypyrus installed. If not, you can install it using:
+
+[code, bash]
+====
+pip install pypyrus
+====
+
+### Running Pypyrus
+[code, bash]
+====
+pypyrus -u https://github.com/ikarys/pypyrus-avanced-example -t my_folder
+====
+
+Follow the prompts and provide the requested information:
+
+* `module_name`: Enter the name of the Terraform module.
+* `resource_group_name`: Enter the name of the resource group (required).
+* `location`: Enter the location (default: France Central).
+* `storage_account_name`: Enter the name of the storage account (default: mystorageaccount).
+* `replication_enabled`: Do you want replication? (choices: [true, false], default: false).
+* `replication_type`: Select the replication type for the storage account (choices: ["LRS", "GRS", "ZRS", "RAGRS"], default: "LRS") with a condition based on replication_enabled.
+
+## Generated Files
+
+Upon completion, Pypyrus will generate the following files:
+
+- `{{ module_name|slug }}/main.tf`: Terraform main configuration file.
+- `{{ module_name|slug }}/outputs.tf`: Terraform outputs configuration file.
+- `{{ module_name|slug }}/variables.tf`: Terraform variables configuration file.
+
+Feel free to customize the generated files based on your project requirements.
+
+## Feedback
+
+If you encounter any issues or have suggestions for improvement, please open an issue. Your feedback is highly appreciated!
